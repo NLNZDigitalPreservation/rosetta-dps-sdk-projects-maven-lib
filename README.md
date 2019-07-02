@@ -23,6 +23,16 @@ This project does that very thing.
 Versions are by filename. For example, the 5.5.0 version is in the dps-sdk-5.5.0.jar
 file and the pom file is dps-sdk-5.5.0-pom.xml.
 
+## Updating this project
+
+From time to time, ExLibris will release new versions of their SDK. Until that SDK jar has an accompanying `pom.xml` or
+is posted to something like Maven Central, it will be necessary to add that new jar to this project with a
+handcrafted POM that matches the dependencies of the new SDK jar. Check in that new version to the project and
+possibly update the example scripts.
+
+Please don't remove the old versions of the jar as some users may still be running an older version of ExLibris and
+may require the older jar.
+
 ## Usage
 
 ### Uploading to Nexus repository
@@ -31,6 +41,11 @@ file and the pom file is dps-sdk-5.5.0-pom.xml.
 
 ```
 mvn install:install-file -Dfile=<path-to-dps-sdk-jar-file> -DpomFile=<path-to-pomfile-coversioned-with-dps-sdk-jar-file>
+```
+
+For example, if you are running maven from this root directory of this project, you would use the command:
+```
+mvn install:install-file -Dfile=dps-sdk-5.5.0.jar -DpomFile=dps-sdk-5.5.0-pom.xml
 ```
 
 ## Including in projects
